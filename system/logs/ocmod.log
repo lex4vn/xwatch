@@ -1,0 +1,130 @@
+2016-01-09 5:08:24 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 58
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 20
+LINE: 37
+LINE: 54
+LINE: 65
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 21
+LINE: 27
+----------------------------------------------------------------
+MOD: <font color="#0000"><b>Pavo Framework 3.0</font>
+FILE: admin/view/template/design/layout_form.tpl
+CODE: <select name="layout_module[<?php echo $module_row; ?>][position]" class="form-control">
+LINE: 105
+FILE: admin/controller/common/menu.php
+CODE: $this->load->language('common/menu');
+LINE: 3
+FILE: admin/view/template/common/menu.tpl
+CODE: <li id="sale">
+LINE: 26
+FILE: catalog/language/english/common/cart.php
+CODE: $_['text_items']    = '%s item(s) - %s';
+NOT FOUND!
+FILE: catalog/language/english/checkout/cart.php
+CODE: $_['text_items']               = '%s item(s) - %s';
+LINE: 8
+----------------------------------------------------------------
+MOD: BuyNow by iSenseLabs
+FILE: catalog/view/theme/default/template/common/footer.tpl
+CODE: </body>
+LINE: 55
+FILE: catalog/view/theme/lexus_golmart/template/common/footer.tpl
+CODE: </body>
+LINE: 121
+FILE: catalog/controller/checkout/cart.php
+CODE: $this->cart->add($this->request->post['product_id'], $this->request->post['quantity'], $option, $recurring_id);
+NOT FOUND!
+FILE: catalog/controller/product/product.php
+CODE: if ($product_info) {
+LINE: 191
+FILE: catalog/view/theme/default/template/product/product.tpl
+CODE: if (json['success']) {
+LINE: 435
+LINE: 485
+LINE: 555
+LINE: 606
+CODE: <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><?php echo $button_cart; ?></button>
+LINE: 317
+FILE: catalog/view/theme/lexus_golmart/template/product/product.tpl
+CODE: if (json['success']) {
+LINE: 87
+LINE: 137
+LINE: 207
+LINE: 258
+CODE: <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><?php echo $button_cart; ?></button>
+NOT FOUND!
+----------------------------------------------------------------
+2016-01-09 5:08:41 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 58
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 20
+LINE: 37
+LINE: 54
+LINE: 65
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 21
+LINE: 27
+----------------------------------------------------------------
+MOD: <font color="#0000"><b>Pavo Framework 3.0</font>
+FILE: admin/view/template/design/layout_form.tpl
+CODE: <select name="layout_module[<?php echo $module_row; ?>][position]" class="form-control">
+LINE: 105
+FILE: admin/controller/common/menu.php
+CODE: $this->load->language('common/menu');
+LINE: 3
+FILE: admin/view/template/common/menu.tpl
+CODE: <li id="sale">
+LINE: 26
+FILE: catalog/language/english/common/cart.php
+CODE: $_['text_items']    = '%s item(s) - %s';
+NOT FOUND!
+FILE: catalog/language/english/checkout/cart.php
+CODE: $_['text_items']               = '%s item(s) - %s';
+LINE: 8
+----------------------------------------------------------------
+MOD: BuyNow by iSenseLabs
+FILE: catalog/view/theme/default/template/common/footer.tpl
+CODE: </body>
+LINE: 55
+FILE: catalog/view/theme/lexus_golmart/template/common/footer.tpl
+CODE: </body>
+LINE: 121
+FILE: catalog/controller/checkout/cart.php
+CODE: $this->cart->add($this->request->post['product_id'], $this->request->post['quantity'], $option, $recurring_id);
+NOT FOUND!
+FILE: catalog/controller/product/product.php
+CODE: if ($product_info) {
+LINE: 191
+FILE: catalog/view/theme/default/template/product/product.tpl
+CODE: if (json['success']) {
+LINE: 435
+LINE: 485
+LINE: 555
+LINE: 606
+CODE: <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><?php echo $button_cart; ?></button>
+LINE: 317
+FILE: catalog/view/theme/lexus_golmart/template/product/product.tpl
+CODE: if (json['success']) {
+LINE: 87
+LINE: 137
+LINE: 207
+LINE: 258
+CODE: <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><?php echo $button_cart; ?></button>
+NOT FOUND!
+----------------------------------------------------------------

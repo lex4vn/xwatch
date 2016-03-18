@@ -1,0 +1,59 @@
+.page-pavblog{
+	padding:20px;
+	h1{
+		margin: 0;
+	}
+}
+.pav-blogs{
+	.blog-date{
+		background: $black;
+		color: $white;
+		display: block;
+		@include rtl-float-left();
+		font-size: $font-size-base + 4;
+		height: 70px;
+		line-height: normal;
+		margin-right: 20px;
+		overflow: hidden;
+		padding: 12px;
+		.day {
+			padding: 0;
+			display: block;
+			text-align: center;
+		}
+	}	
+	.blog-body{
+		overflow: hidden;
+		.text-link{
+			color: $black;
+			font-weight: 600;
+			.fa{
+				@include rtl-padding-left(5px);
+			}
+			&:hover,&:active,&:focus{
+				color: $link-hover-color;
+			}
+		}
+	}
+	.blog-title{
+		margin: 0 0 20px;
+		a{
+			color: $black;
+		}
+	}
+	.blog-meta{
+	  border: 1px solid $border-color;
+	  overflow: hidden;
+	  ul{
+		margin: 0;
+		  	li {
+			  display: inline-block;
+			  padding: 10px 5px;
+			  @include rtl-border-right(1px solid $border-color);
+			  &:last-child{
+			  	@include rtl-border-right(none);
+			  }
+			}
+		}
+	}	 
+}

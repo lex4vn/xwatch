@@ -1,0 +1,117 @@
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+@media screen and (max-width: $screen-md-min) {
+    .row-offcanvas {
+        position: relative;
+        @include transition(all 0.25s ease-out);
+    }
+    .row-offcanvas-right {
+        @include rtl-right(0);
+    }
+    .row-offcanvas-left {
+        @include rtl-left(0);
+    }
+    .row-offcanvas-right
+    .sidebar-offcanvas {
+        @include rtl-right(-70%);
+    }
+    .row-offcanvas-left
+    .sidebar-offcanvas {
+        @include rtl-left(-70%);
+    }
+    .row-offcanvas-right.active {
+        @include rtl-right(70%);
+    }
+    .row-offcanvas-left.active {
+        @include rtl-left(70%);
+    }
+    .sidebar-offcanvas {
+        position: absolute;
+        top: 0;
+        width: 70%;
+        ul, ol {
+            padding: 0;
+            li {
+                list-style: none;
+            }
+        }
+    }
+    .bottom-offcanvas {
+        border-top: 1px solid $border-color-base;
+        padding: 10px 0;
+    }
+}
+
+/*offcanvas-menu*/
+#offcanvasmenu {
+  .nav .caret {
+      border-bottom-color: $white;
+      border-top-color: $white;
+      margin-left: 5px;
+  }
+  .pavo-widget .widget-heading{
+    margin-top: 15px;
+  }
+  .navbar-nav {
+    float: none;
+    margin: 0;
+
+    > li {
+      float: none;
+      background-color: $theme-color;
+      border-right:none;
+      &:hover:after{
+        display: none;
+      }
+      >a {
+        display: block;
+        @include box-shadow( inset 0 -1px rgba(0,0,0,0.2));
+        text-transform: uppercase;
+        color: $white;
+      }
+    }
+  }
+  .dropdown-menu {
+    border: 0 none;
+    border-radius: 0;
+    box-shadow: none;
+    display: block;
+    float: none;
+    margin: 0;
+    padding: 0 10px;
+    position: static;
+    visibility: visible;
+    width: auto!important;
+    min-width: 160px;
+    @include opacity (1);
+    a {
+      font-size: 13px;
+      padding: 5px 0;
+      display: block;
+      color: $text-color;
+      &:hover{
+        color: $theme-color;
+      }
+    }
+  }
+  .w-product {
+    padding: 0;
+  }
+  .product-block{
+    border: none;
+    padding: 0;
+    .image {
+      float: none;
+      margin: 0;
+    }
+  } 
+}
+.canvas-menu{
+  @include rtl-margin-left(10px);
+  height: 25px;
+  padding: 0px 10px;
+  font-size: 10px;
+  margin-top: 8px;
+}

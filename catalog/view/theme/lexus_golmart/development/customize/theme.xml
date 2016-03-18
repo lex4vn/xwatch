@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme>
+	<header>
+		<title>Topbar Block</title>
+		<description></description>
+		<module>
+	 	 	<title>Support</title>
+	 	 	<field>
+	 	 		<name>widget_support</name>
+	 	 		<label>Content</label>
+	 	 		<type>textarea</type>
+	 	 		<lang>1</lang>
+	 	 		<default><![CDATA[
+	 	 			<div class="media">           
+					  <div class="pull-left">             
+					    <i class="icon icon-phone"></i>           
+					  </div>
+					  <div class="media-body">              
+					  <h6>call us</h6>
+					  <span style="font-weight:bold">+844 123 456 78</span>
+					  </div>
+					</div>
+	 	 		]]></default>
+	 		</field>
+	 	</module>
+
+	 	<module>
+	 	 	<title>Contact</title>
+	 	 	<field>
+	 	 		<name>widget_contact</name>
+	 	 		<label>Content</label>
+	 	 		<type>textarea</type>
+	 	 		<lang>1</lang>
+	 	 		<default><![CDATA[
+	 	 			<div class="media">
+						<div class="pull-left">
+							<i class="icon icon-mail"></i>
+						</div>
+						<div class="media-body">							
+							<h6>email us</h6>  
+							<span>contact@company.com</span>
+						</div>
+					</div>
+	 	 		]]></default>
+	 		</field>
+	 	</module>
+
+	</header>
+	<footer>
+		<title>Footer Bottom Block</title>
+		<description></description>
+	 	<module>
+	 	 	<title>Logo</title>
+	 	 	<field>
+	 	 		<name>widget_logo</name>
+	 	 		<label>Content</label>
+	 	 		<type>textarea</type>
+	 	 		<lang>1</lang>
+	 	 		<default><![CDATA[
+	 	 			<div class="custom-logo">
+	 	 			<img alt="logo" src="image/catalog/logo-footer.png">	 	 			
+						<address class="space-top-30">
+						  <span class="text-uppercase black">main office</span><br>
+						  PO Box 16122 Collins Street West Victoria 8007 Australia<br>
+						  +844 123 456 78 / +844 123 456 79<br>
+						  <a href="mailto:#">contac@yourcompany.com</a>
+						</address>
+					</div>
+
+
+	 	 		]]></default>
+	 		</field>
+	 	</module>
+	 	<module>
+	 	 	<title>About Us</title>
+	 	 	<field>
+	 	 		<name>widget_about_us</name>
+	 	 		<label>Content</label>
+	 	 		<type>textarea</type>
+	 	 		<lang>1</lang>
+	 	 		<default><![CDATA[
+	 	 			<div class="panel pull-right">                    
+						<div class="panel-heading">    
+						<h6 class="panel-title">about us</h6>
+						</div>
+						<div class="panel-body">       
+							<p>
+								Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, necittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor<br> a ornare odio. Sed non  mauris vitae erat 
+							</p>                           
+						</div>
+					</div>
+	 	 		]]></default>
+	 		</field>
+	 	</module>	
+	 	<module>
+	 	 	<title>Papal</title>
+	 	 	<field>
+	 	 		<name>widget_papal</name>
+	 	 		<label>Content</label>
+	 	 		<type>textarea</type>
+	 	 		<lang>1</lang>
+	 	 		<default><![CDATA[
+	 	 			                 
+					    <img alt="papal" src="image/catalog/payment.png">                  
+					 
+	 	 		]]></default>
+	 		</field>
+	 	</module>
+	</footer>	
+</theme>
+

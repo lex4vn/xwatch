@@ -1,0 +1,94 @@
+// auto search
+.search-auto{
+    padding-top:15px;
+}
+.autosearch-wrapper {
+    margin: 10px 0 0;
+    background:$white;
+    color: $black;   
+    height: 42px;
+    .input-group-btn {
+        position: relative;
+        &:after {
+            background: #f8f8f8;
+            line-height: 40px;
+            position: absolute;
+            @include rtl-right(19px);
+            text-align: center;
+            top: 1px;
+            font-family: 'FontAwesome';
+            content: "\f107";
+            font-size:$font-size-base;
+            @include size(35px,40px);
+            color: $black;
+
+        }       
+        &:before {
+          /*   line-height: 40px;
+            position: absolute;
+            @include rtl-left(10px);
+            text-align: center;
+            top: 1px;
+            font-family: 'FontAwesome';
+            @include size(25px,40px);
+            content: "\f009";
+            font-size:$font-size-base - 2; */
+        }
+    }
+    .category_filter{
+        border: none;
+        display: inline-block;
+        font-size:$font-size-base;
+        height: 40px;
+        line-height: 30px;
+        @include rtl-margin-right(30px);
+        @include box-shadow(inherit);
+        background-color:#f8f8f8;
+        border-left:1px solid #eeeeee;
+        @include rtl-padding-left(10px);
+        @media(max-width: $screen-xs) {
+            max-width: 130px;
+        }
+    }
+    .search_query{
+        background-color: transparent;
+        border: 0;
+        height: 42px;
+        &:focus {
+            @include box-shadow(inherit);
+        }
+    }
+    .input-group {
+        width: 100%;
+        @include rtl-padding-right(35px);
+    }
+    .button-search {
+        position: absolute;
+        @include rtl-right(-2px);
+        top: 0;
+        z-index: 10;
+        border: 0;
+        @include size(55px,42px);
+        color: $white;
+        padding:0;
+    }
+    .dropdown-menu {
+        z-index: 999;
+        > li {
+            &.clearfix {
+                border-bottom: 1px dashed $border-color-base;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            &:last-child {
+                border-bottom: none;
+            }
+            > a {
+                padding: 0;
+            }
+            .media-body{
+                @include rtl-padding-left(10px);
+            }
+        }
+    }
+}

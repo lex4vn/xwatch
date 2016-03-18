@@ -1,0 +1,44 @@
+/******************************************************
+ * @package Pav Opencart Theme Framework for Opencart 1.5.x
+ * @version 3.0
+ * @author http://www.pavothemes.com
+ * @copyright	Copyright (C) May 2014 PavoThemes.com <@emai:pavothemes@gmail.com>.All rights reserved.
+ * @license		GNU General Public License version 2
+*******************************************************/
+
+// Using Variables Of Pavoframework
+// Core variables and mixins
+
+@import "vars/bootstrap";
+@import "vars/opencart";
+@import "vars/elements.vars";
+@import "mixins/bootstrap";
+@import "mixins/app";
+@import "app/base";
+@import "fonts";
+@import "app/elements";
+@import "app/form";
+@import "app/layout";
+@import "app/block";
+@import "app/product";
+@import "app/modules";
+@import "app/menu";
+@import "app/animation";
+@import "opencart/opencart-modules";
+@import "opencart/opencart-pages";
+@import "opencart/offcanvas";
+@import "opencart/style";
+@import "opencart/theme";
+// modules
+@import "opencart/modules/testimonial.scss";
+@import "opencart/modules/megamenu.scss";
+@import "opencart/modules/verticalmenu.scss";
+@import "opencart/modules/deals.scss";
+@import "opencart/modules/blogs.scss";
+@import "opencart/modules/carousel.scss";
+@import "opencart/modules/newsletter.scss";
+@import "opencart/modules/autosearch.scss";
+@import "opencart/modules/reassurance.scss";
+
+// overwire css
+@import "opencart/responsive";

@@ -1,0 +1,89 @@
+
+/* customize for body,body #page */ 
+body,body #page { 
+font-family:Tahoma, Geneva, sans-serif 
+} 
+
+/* customize for #topbar .container .inside */ 
+#topbar .container .inside { 
+background-image:url(2f0aff) 
+} 
+
+/* customize for .footer-center */ 
+.footer-center { 
+background-color:#db2cdb;
+background-image:url(../../image/pattern/pattern12.png) 
+} 
+
+/* customize for .footer-center .container .inside */ 
+.footer-center .container .inside { 
+background-color:#d0f3f5;
+background-image:url(../../image/pattern/pattern12.png) 
+} 
+
+/* customize for #footer .footer-center .panel-title,.footer-center .container .inside  */ 
+#footer .footer-center .panel-title,.footer-center .container .inside  { 
+color:#0ddb21 
+} 
+
+/* customize for .footer-center .container .inside a */ 
+.footer-center .container .inside a { 
+color:#d40000 
+} 
+
+/* customize for #powered */ 
+#powered { 
+background-color:#945094;
+background-image:url(../../image/pattern/pattern10.png) 
+} 
+
+/* customize for #powered .container .inside */ 
+#powered .container .inside { 
+background-color:#bbc7fc;
+background-image:url(../../image/pattern/pattern10.png);
+color:#ff03ff 
+} 
+
+/* customize for #powered .container .inside a */ 
+#powered .container .inside a { 
+color:#448a02 
+} 
+
+/* customize for .product-block .name a */ 
+.product-block .name a { 
+color:#9e2f9e 
+} 
+
+/* customize for .price .price-new */ 
+.price .price-new { 
+color:#00d620 
+} 
+
+/* customize for .price .price-old */ 
+.price .price-old { 
+color:#942294 
+} 
+
+/* customize for 
+				.action buttom .fa,.action div a
+			 */ 
+
+				.action buttom .fa,.action div a
+			 { 
+color:#170a7d 
+} 
+
+/* customize for .btn-outline-inverse */ 
+.btn-outline-inverse { 
+background-color:#e80ee8 
+} 
+
+/* customize for .product-label */ 
+.product-label { 
+color:#d139d1 
+} 
+
+/* customize for .product-label.sale */ 
+.product-label.sale { 
+background-color:#bd35bd 
+} 

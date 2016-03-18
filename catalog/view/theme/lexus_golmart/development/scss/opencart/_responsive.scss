@@ -1,0 +1,121 @@
+@media (max-width: $screen-md-max){
+    .pav-megamenu .navbar-nav > li > a{
+        padding:22px 14px;
+    }
+    .navbar-collapse{
+        padding-left:5px;
+        padding-right:5px;
+    }
+    .bs-docs-sidebar{
+        left: 0;
+    }
+    .box-support > .media .media-body{
+        font-size: $font-size-base - 1;
+    }
+    .home4 .verticalmenu .navbar-nav > li{
+        padding:0 8px;
+    }
+    .bs-docs-sidebar{
+        display: none;
+    }
+}
+/*$media (max-width: 991px) {*/
+@media (max-width: $screen-sm-max) {
+    .mass-bottom::before,.line::before{
+        content: none;
+    }
+     .zoomContainer {
+        display: none;
+    }
+}
+@media (max-width: $screen-sm) { 
+    .footer-center .column:last-child{
+        clear: both;
+    }
+}
+/*$media (max-width: 767px) {*/
+@media (max-width: $screen-xs-max) { 
+    .flashsale {
+        .text-heading{
+            font-size: 12px;
+            padding:10px 0;
+            border: none;
+        }
+        .panel-heading{
+            padding:5px;
+        }
+        .item-countdown ul{
+            padding-left:0;
+            margin: 10px 0;
+        }
+    }
+    .newsletter-v3 .panel-heading{
+        padding-bottom:10px;
+    }
+    #topbar .btn-group{
+        @include rtl-margin-right(2px);
+    }
+    #topbar .btn-group .btn-dropdown{
+        padding:5px;
+    }
+    .quickaccess-toggle {
+        cursor: pointer;
+        padding:5px;
+        background-color:$theme-color-darker;  
+        position: relative;
+        &:hover {
+            .inner-toggle{
+              display: block;
+            }  
+        } 
+        i{
+            @include rtl-padding-left(5px);
+        }
+    }
+    .inner-toggle {
+        background: $white;
+        display: none;
+        min-width: 150px;           
+        position: absolute;     
+        z-index: 99999;  
+        @include rtl-left(0);
+        padding:10px;
+        border:1px solid rgba(0, 0, 0, 0.15);
+         ul{
+            padding:0;
+            li{
+                display: block;
+                line-height: 24px;
+                width: 100%;
+                span{
+                    @include rtl-padding-right(3px);
+                }
+                a{
+                    color: $text-color;
+                    &:hover{
+                        color: $theme-color;
+                    }
+                }
+            }    
+        }   
+    }
+}
+@media (max-width: $screen-xs) {
+    .product-list .product-col .block-img{
+        float: none;
+        width: 100%;
+    }
+    .tab-v4 .nav-tabs > li {
+        &:first-child{
+            border:none;
+        }
+        > a{
+            font-size: $font-size-base - 2;
+            padding:10px;
+        }  
+        border:none;
+    }
+    .product-filter .filter-right > div{
+        margin-bottom: 5px;
+    }
+}

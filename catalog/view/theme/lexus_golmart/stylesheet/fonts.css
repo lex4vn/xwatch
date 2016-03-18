@@ -1,0 +1,45 @@
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 300;
+  src: local("Ubuntu Light"), local("Ubuntu-Light"), url(http://fonts.gstatic.com/s/ubuntu/v7/_aijTyevf54tkVDLy-dlnFtXRa8TVwTICgirnJhmVJw.woff2) format("woff2"), url(http://fonts.gstatic.com/s/ubuntu/v7/_aijTyevf54tkVDLy-dlnD8E0i7KZn-EPnyo3HZu7kw.woff) format("woff");
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Ubuntu"), url(http://fonts.gstatic.com/s/ubuntu/v7/sDGTilo5QRsfWu6Yc11AXg.woff2) format("woff2"), url(http://fonts.gstatic.com/s/ubuntu/v7/_xyN3apAT_yRRDeqB3sPRg.woff) format("woff");
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 500;
+  src: local("Ubuntu Medium"), local("Ubuntu-Medium"), url(http://fonts.gstatic.com/s/ubuntu/v7/OsJ2DjdpjqFRVUSto6IffFtXRa8TVwTICgirnJhmVJw.woff2) format("woff2"), url(http://fonts.gstatic.com/s/ubuntu/v7/OsJ2DjdpjqFRVUSto6IffD8E0i7KZn-EPnyo3HZu7kw.woff) format("woff");
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  src: local("Ubuntu Bold"), local("Ubuntu-Bold"), url(http://fonts.gstatic.com/s/ubuntu/v7/0ihfXUL2emPh0ROJezvraFtXRa8TVwTICgirnJhmVJw.woff2) format("woff2"), url(http://fonts.gstatic.com/s/ubuntu/v7/0ihfXUL2emPh0ROJezvraD8E0i7KZn-EPnyo3HZu7kw.woff) format("woff");
+}
+@font-face {
+  font-family: 'playfair_displayregular';
+  src: url("../fonts/PlayfairDisplay-Regular-webfont.eot");
+  src: url("../fonts/PlayfairDisplay-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/PlayfairDisplay-Regular-webfont.woff2") format("woff2"), url("../fonts/PlayfairDisplay-Regular-webfont.woff") format("woff"), url("../fonts/PlayfairDisplay-Regular-webfont.ttf") format("truetype"), url("../fonts/PlayfairDisplay-Regular-webfont.svg#playfair_displayregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'playfair_displayitalic';
+  src: url("../fonts/PlayfairDisplay-Italic-webfont.eot");
+  src: url("../fonts/PlayfairDisplay-Italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/PlayfairDisplay-Italic-webfont.woff2") format("woff2"), url("../fonts/PlayfairDisplay-Italic-webfont.woff") format("woff"), url("../fonts/PlayfairDisplay-Italic-webfont.ttf") format("truetype"), url("../fonts/PlayfairDisplay-Italic-webfont.svg#playfair_displayitalic") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'playfair_displaybold';
+  src: url("../fonts/PlayfairDisplay-Bold-webfont.eot");
+  src: url("../fonts/PlayfairDisplay-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/PlayfairDisplay-Bold-webfont.woff2") format("woff2"), url("../fonts/PlayfairDisplay-Bold-webfont.woff") format("woff"), url("../fonts/PlayfairDisplay-Bold-webfont.ttf") format("truetype"), url("../fonts/PlayfairDisplay-Bold-webfont.svg#playfair_displaybold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}

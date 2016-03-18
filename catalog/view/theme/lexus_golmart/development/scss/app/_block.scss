@@ -1,0 +1,30 @@
+.#{$block-prefix}-highlighted {
+    border: $block-module-highlighted-border;   
+    .#{$block-heading-selector} {
+            background: $block-module-highlighted-bg;
+            color: $block-module-footer-heading-color   ; 
+    }
+    .#{$block-content-selector}{
+           
+    }
+}
+.nopadding{
+    .panel-body{
+        padding:0;
+    }
+}
+.sidebar{
+    .panel{
+        margin-bottom: $line-height-computed + 10;
+    }
+}
+
+.nostylingboxs{
+    .#{$block-heading-selector} {
+       padding: 0;
+       margin-bottom: 30px;
+    }
+    .#{$block-content-selector} {
+        padding: 0;
+    }
+}

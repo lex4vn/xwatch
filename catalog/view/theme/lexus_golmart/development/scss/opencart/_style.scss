@@ -1,0 +1,112 @@
+.col-nopadding{
+	.row{
+		margin-left: 0;
+		margin-right: 0;
+		[class*="col-"]{
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+}
+.no-padding{
+	padding:0;
+}
+.no-margin{
+	margin:0;
+}
+.nopadding [class*="col-"], .nopadding [class^="col-"]{
+	padding-right:0;
+	padding-left:0;
+}
+.style-left{
+	background:$white;
+	height: 595px;
+    max-height: 595px;
+    z-index: 11;
+}
+.over-hidden{
+	overflow:hidden;
+	.col-inner{
+		overflow: hidden;
+	}
+	.owl-carousel .owl-wrapper-outer{
+		overflow: visible;
+	}
+}
+
+/* back top top */
+.scrollup {
+    background: #e6e6e6 !important;
+    bottom: 82px;
+    position: fixed;
+    @include rtl-right(10px);
+	z-index: 9999;
+}
+.special-banner {
+    @include rtl-float-left();
+    width: 50%;
+}
+/* checkout */
+.style1{
+	.panel-title{
+		border:1px solid $border-color;
+		padding:10px;
+	}
+}
+.bg-top{
+	background-repeat:no-repeat;
+	background-position:top center;
+}
+/* support */
+
+.box-support{
+	text-align: center;
+	margin-top:10px;
+    > .media {
+        margin-top: 0;
+        display: inline-flex;
+        @include rtl-text-align-left;
+        .icon{
+        	background-image: url(#{$image-theme-path-base}icon-support.png);
+        	@include size(40px,26px);
+        	display: block;
+        	&.icon-mail{
+        		background-position:0 -25px;
+        	}
+        }
+        .media-body {
+          font-size: $font-size-base;
+          padding: 3px 0;
+          color: $black;
+          h6{
+            font-size: $font-size-base - 2;
+            margin: 0 0 3px;
+            color: $gray;
+          }
+        }
+    }   
+}
+.box-about{
+	 padding:35px 20px;
+	margin-top:-140px;
+	color:$white;
+	a{
+		color: $black;
+		text-decoration: underline;
+		&:hover{
+			color: $white;
+		}
+	} 
+}
+.line{
+	position:relative;
+	&:before{
+		background: lighten($theme-color, 8%);
+	    top: 0;
+	    content: "";
+	    position: absolute;
+	    @include size(1px,64px);
+	    @include rtl-right(0);
+	   	@include rtl-margin-right(-30px);
+	}
+}

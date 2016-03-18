@@ -1,0 +1,95 @@
+<modification>
+	<name>BuyNow by iSenseLabs</name>
+	<version>2.2</version>
+	<link>http://isenselabs.com</link>
+	<author>iSenseLabs</author>
+	<code>isenselabs_buynow</code>
+	
+	<file path="catalog/view/theme/*/template/common/footer.tpl">
+		<operation>
+			<search><![CDATA[</body>]]></search>
+			<add position="before"><![CDATA[
+				<script type="text/javascript" src="catalog/view/javascript/buynow/buynow.js"></script>
+		]]></add>
+		</operation>
+	</file>
+	
+	<file path="catalog/controller/checkout/cart.php">
+		<operation>
+			<search><![CDATA[$this->cart->add($this->request->post['product_id'], $this->request->post['quantity'], $option, $recurring_id);]]></search>
+			<add position="after"><![CDATA[
+				$this->load->model('setting/setting');
+				$BuyNow = $this->model_setting_setting->getSetting('BuyNow', $this->config->get('store_id'));
+				
+				if ( isset($BuyNow) && ($BuyNow['BuyNow']['Enabled'] == 'yes') ) {
+					if ( $BuyNow['BuyNow']['ShowWhere']=='all_products' ) {
+						$json['redirect'] = $this->url->link('checkout/checkout', null, 'SSL');
+					} else if ( $BuyNow['BuyNow']['ShowWhere']=='specific_products' ) {
+						if ( isset($BuyNow['BuyNow']['Products']) && (in_array($this->request->post['product_id'],$BuyNow['BuyNow']['Products'])) )
+							$json['redirect'] = $this->url->link('checkout/checkout', null, 'SSL');		
+					}
+				} 
+		]]></add>
+		</operation>
+	</file>
+	
+	<file path="catalog/controller/product/product.php">
+		<operation>
+			<search><![CDATA[if ($product_info) {]]></search>
+			<add position="after"><![CDATA[
+				$this->load->model('setting/setting');
+				$this->load->language('module/buynow');
+				
+				$languageVariables= array(
+					'heading_title',
+					'buy_now'
+				);
+				
+				foreach ($languageVariables as $variable) {
+					$data[$variable] = $this->language->get($variable);
+				}
+				
+				$BuyNow = $this->model_setting_setting->getSetting('BuyNow', $this->config->get('store_id'));
+				$data['BuyNow'] = false;
+				if ( isset($BuyNow) && ($BuyNow['BuyNow']['Enabled'] == 'yes') ) {
+				
+					if(!isset($BuyNow['BuyNow']['ButtonName'][$this->config->get('config_language')])){
+						$data['BuyNowButton'] = $this->data['buy_now'];
+					} else {
+						$data['BuyNowButton'] = $BuyNow['BuyNow']['ButtonName'][$this->config->get('config_language')];
+					}
+					
+					if ( $BuyNow['BuyNow']['ShowWhere']=='all_products' ) {
+						$data['BuyNow'] = true;
+					} else if ( $BuyNow['BuyNow']['ShowWhere']=='specific_products' ) {
+						if ( isset($BuyNow['BuyNow']['Products']) && (in_array($product_id,$BuyNow['BuyNow']['Products'])) )
+							$data['BuyNow'] = true;						
+					}
+				} 
+			]]></add>
+		</operation>
+	</file>
+	
+	<file path="catalog/view/theme/*/template/product/product.tpl">
+		<operation>
+			<search offset="1" limit="1"><![CDATA[if (json['success']) {]]></search>
+			<add position="before" ><![CDATA[
+				if (json['redirect'] && !json['error']) {
+					location = json['redirect'];
+				}
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search><![CDATA[<button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><?php echo $button_cart; ?></button>]]></search>
+			<add position="replace"><![CDATA[
+			<?php if ((isset($BuyNow)) && ($BuyNow==true)) { ?>
+				<button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><?php echo $BuyNowButton; ?></button>
+			<?php } else { ?>
+				<button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><?php echo $button_cart; ?></button>
+			<?php } ?>
+			]]>
+			</add>
+		</operation>
+	</file>
+</modification>

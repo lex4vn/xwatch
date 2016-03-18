@@ -1,0 +1,7 @@
+It's reality website to allow:
+	- Customer: view & purchase XWatchs products
+	- XWatchs: manage products, bills...
+
+It must be a general template to easy REPLACE the PROPERTIES (e.g: website name, website title, features...). 
+	- REPLACE will excuted by auto-deploy tool.
+	- PROPERTIES will be retrieved from transport website.

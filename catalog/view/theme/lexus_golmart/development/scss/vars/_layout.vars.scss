@@ -1,0 +1,138 @@
+// Box Modules 
+// ========================================================================
+
+/**
+ *   Blocks Layout Selectors 
+ */
+$block-prefix 			 		: box !default;
+$block-selector          		: box !default;
+$block-heading-selector  		: box-heading !default;
+$block-content-selector  		: box-content !default;
+
+
+$block-module-margin-bottom: 			18px !default;
+$block-module-padding  :				20px !default;
+$block-module-border-color: 			$border-color  !default;
+$block-module-heading-border: 		    1px !default;
+$block-module-heading-transform:        uppercase !default;
+$block-module-heading-line-height:      normal !default;
+$block-module-heading-font-family:      $font-family-base !default;
+$block-module-heading-bg:				#f5f5f5 !default;
+$block-module-heading-padding: 		    10px 15px !default;
+$block-module-heading-span-font-size:	 12px !default;
+$block-module-heading-font-size:		 $font-size-h3 !default;
+$block-module-heading-color:			#434a54 !default;
+$block-module-content-bg:				#FFFFFF !default;
+$block-module-content-border:			1px solid $border-color !default;
+$block-module-content-padding:			20px !default;
+$block-module-content-margin:           0px !default;
+$block-module-content-radius:           0px !default;
+
+
+$block-module-highlighted-bg			: red !default;
+$block-module-highlighted-border		: solid 1px red !default;
+$block-module-footer-heading-color		: #FFFFFF !default; 
+
+$block-product-padding:               0 !default;
+$block-heading-letter-spacing:        0px !default;
+
+
+
+$footer-heading-font: 14px !default;
+
+// Header
+// ========================================================================
+$header-outside-bg: 				transparent !default;
+$header-bg:  						#fff !default;
+$header-container-padding:			25px 0 !default;
+$header-border-color: 				$border-color !default;
+$header-icon-bg:                    $wild-sand !default;
+$header-border-color:               1px solid transparent !default;
+$header-heading-color:              $theme-color-secondary !default;
+$header-text-color:                 $tundora !default;
+$header-link-color: 				$header-text-color !default;
+$header-icon-font-size:             $font-size-base + 4 !default;
+
+$header-top-bg:                     $theme-color !default;
+
+// Topbar 
+// ========================================================================
+$topbar-family: 					$font-family !default;
+$topbar-outside-bg: 				$theme-color !default;
+$topbar-bg: 						#e9ecf5 !default;
+$topbar-border-color: 				#464646 !default;
+$topbar-color:						$white !default;
+$topbar-link-hover:					$theme-color !default;
+$topbar-font-size:					$font-size-base - 2 !default;
+$topbar-container-padding:			10px 10px 10px 20px!default;
+// Mass header 
+// ========================================================================
+$masshead-outside-bg :			$theme-color !default;
+$masshead-bg: 			 		$white !default;
+$masshead-content-padding:		8px 0 !default;
+$masshead-color:				$theme-color !default;
+$masshead-color-hover:			lighten($theme-color,5%);	
+
+
+// Main menu 
+
+
+// Promotions
+
+
+// Showcase
+$showcase-bg: 					$white;
+
+
+//Main Content
+$content-bg:					$white;
+
+
+// Footer
+// ========================================================================
+
+$footer-bg: 						$gray-dark !default;
+$footer-color: 						$text-color !default;
+$footer-font-size:   	 			14px !default;
+$footer-padding:                    50px 0 !default;
+$footer-heading-color:              $theme-color-tertiary !default;
+$footer-border:					$gray !default;
+ /////// footer top
+$footer-top-outside-bg :			$gray-dark !default;
+$footer-top-color:					$text-color !default;	
+$footer-top-bg: 			 		$theme-color !default;
+$footer-top-link:					$footer-color !default;	
+$footer-top-link-hover:				$theme-color !default;	
+$footer-top-border:					$gray !default;
+
+/////// footer center 
+$footer-center-outside-bg :			$white !default;
+$footer-center-color:				$theme-color-tertiary !default;
+$footer-center-bg: 			 		$white !default;
+$footer-center-link:				$theme-color-tertiary !default;	
+$footer-center-link-hover:			$theme-color !default;	
+$footer-center-border-color:        $gray !default;
+
+/////// footer bottom 
+$footer-bottom-outside-bg :			$white !default;
+$footer-bottom-color:				$text-color !default;
+$footer-bottom-bg: 			 		$white !default;
+$footer-bottom-link:				$footer-color !default;
+$footer-bottom-link-hover:			$theme-color !default;	
+$footer-bottom-border-color:        $gray !default;
+
+// Powered By / Copyright
+// ========================================================================
+$power-bg-outside:                 transparent !default;
+$power-color:                       $text-color !default;
+$power-bg:       					$white !default;
+$power-link-color:                  $theme-color-tertiary !default;
+$power-link-color-hover:            $theme-color !default;
+$power-border-color:				#eef0f5 !default;
+
+// Responsive
+// ========================================================================
+$respon-topbar-icon:                $white !default;
+$respon-topbar-icon-font-size:      $font-size-base !default;
+$respon-topbar-search-bg:           $white !default;
+$respon-topbar-search-icon-color:   $black !default;

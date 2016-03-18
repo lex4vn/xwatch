@@ -1,0 +1,124 @@
+/* links style */
+ul{
+    &.links {  
+        padding: 0;  
+        position:relative;
+        margin: 0;
+        li{
+            display: inline;        
+            line-height: normal;
+            position: relative;   
+            a {
+                @include rtl-padding-left(10px) ; 
+                color: $theme-color-tertiary;
+                &:hover{
+                    color: $theme-color;    
+                }      
+            }    
+        }               
+    }
+    &.list {  
+    	padding:0;
+    	position:relative;
+    	margin: 0;
+    	li{
+    		list-style: none;
+    		line-height: 30px;
+    		a{
+    			color: $text-color;
+    			&:hover{
+    				color: $theme-color;    
+    			}
+    		}
+    	}
+    }
+
+}    
+.tree-menu {
+	padding:0;
+	ul {
+		border: none;
+		padding: 0;
+		margin: 0;
+		float: none;
+		list-style: none;
+		li {
+			padding: 10px 0;
+			.accordion-heading{
+				cursor: pointer;
+				.fa{
+					font-size: $font-size-base - 4;
+				}
+			}
+			&.open a, a {
+				color: $text-color;
+				text-transform: capitalize;
+				&:hover {
+					color: $theme-color;
+				}
+			}
+		}
+	}
+	ul ul {
+		@include rtl-padding-left(20px);
+		li {
+			list-style: none;
+			border:none;
+			padding: 8px 0;
+			a {
+				color: $text-color;
+				font-weight: normal;	
+				&:hover {
+					color: $theme-color;
+				}			
+			}
+		}
+	}
+	.vertical {
+		.dropdown-submenu:hover {
+			> .dropdown-menu {
+				display: block;
+			}
+		}
+		.dropdown-menu {
+			top: 0;
+			@include rtl-left(100%);
+			width: 100%;
+		}
+	}
+}
+.list-group-item {
+	ul {
+		@include rtl-padding-left(20px);
+		li {
+			list-style: none;
+			padding: 8px 0;
+			a {
+				color: $theme-color-tertiary;				
+			}
+		}
+	}
+}
+div.required .control-label:before {
+    color: #f00;
+    content: "* ";
+    font-weight: bold;
+}
+
+.modal-open {
+  @include rtl-margin-right(13px);
+}
+
+.noborder {
+	.box {
+		border: none !important;
+	}
+}
+.white{
+	color:$white;
+}
+
+.red {
+    color: #f44336;
+    line-height: 20px;
+}

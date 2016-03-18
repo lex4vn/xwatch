@@ -531,6 +531,7 @@ class ControllerModulePavblog extends Controller {
 		$this->mdata['filter'] = $filter;
 		$this->mdata['create_blog_link'] = $this->url->link('module/pavblog/blog', 'token=' . $this->session->data['token'], 'SSL');
 		$this->mdata['edit_link'] = $this->url->link('module/pavblog/blog', 'id=%s&token=' . $this->session->data['token'], 'SSL');
+		$this->mdata['view_link'] = $this->config->get('config_url');
 		$this->document->setTitle( $this->language->get('blogs_page_heading_title') );
 		$this->mdata['heading_title'] =  $this->language->get('blogs_page_heading_title');
 		$this->mdata['action'] = $this->url->link('module/pavblog/blogs', 'token=' . $this->session->data['token'], 'SSL');

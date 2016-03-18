@@ -85,7 +85,14 @@
 									<td width="1" style="text-align: center;">
 										<input type="checkbox" name="selected[]" value="<?php echo $blog['blog_id'];?>">
 									</td>
-									<td class="left"><a href="<?php echo sprintf($edit_link, $blog['blog_id']) ?>"><?php echo $blog['title'];?></a></td>
+									<?php
+										if (empty($blog['keyword'])) {
+									 		$linkBlog = $view_link.'index.php?route=pavblog/blog&blog_id='.$blog['blog_id']; 
+									 	}else{
+									 		$linkBlog = $view_link.$blog['keyword']; 
+									 	}
+									?>
+									<td class="left"><a href="<?php echo $linkBlog ?>" target="_blank"><?php echo $blog['title'];?></a></td>
 									<td class="center"  ><input class="form-control" name="position[<?php echo $blog['blog_id'];?>]" value="<?php echo $blog['position'];?>" style="width:40%"></td>
 									<td class="right"><?php echo ($blog['status']?$objlang->get('text_enable'):$objlang->get('text_disable'));?></td>
 									<td class="right"><?php echo $blog['created'];?></td>

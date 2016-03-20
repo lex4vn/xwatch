@@ -285,15 +285,15 @@ class ControllerModuleThemeControl extends Controller {
  			/**/
  			 
 
-			if( is_dir($this->themePath.'stylesheet/local/') ){
-				$t = $this->themePath.'stylesheet/local/custom.css';
-				if( $data['custom_css'] ) {
-					PavoThemeHelper::writeToCache( $this->themePath.'stylesheet/local/', 'custom', $data['custom_css'], 'css' );	
-				}else if( file_exists($t) && filesize($t) ){
-					@unlink($t);
-					PavoThemeHelper::writeToCache( $this->themePath.'stylesheet/local/', 'custom', "", 'css' );	
-				}
-			}
+			// if( is_dir($this->themePath.'stylesheet/local/') ){
+			// 	$t = $this->themePath.'stylesheet/local/custom.css';
+			// 	// if( $data['custom_css'] ) {
+			// 	// 	PavoThemeHelper::writeToCache( $this->themePath.'stylesheet/local/', 'custom', $data['custom_css'], 'css' );	
+			// 	// }else if( file_exists($t) && filesize($t) ){
+			// 	// 	@unlink($t);
+			// 	// 	PavoThemeHelper::writeToCache( $this->themePath.'stylesheet/local/', 'custom', "", 'css' );	
+			// 	// }
+			// }
 
 			$this->request->post['themecontrol']['custom_css'] = '';
 			$this->model_setting_setting->editSetting($this->moduleName, $this->request->post, $this->store_id );	 

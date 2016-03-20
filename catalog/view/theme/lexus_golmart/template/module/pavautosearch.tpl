@@ -1,7 +1,7 @@
 <div class="<?php echo $additional_class; ?> autosearch-wrapper">
 	<form method="GET" action="index.php">
 	<div id="search<?php echo $module ?>" class="input-group">
-		<input class="search_query form-control" type="text" value="" size="35" autocomplete="off" placeholder="<?php echo $objlang->get("text_search");?>" name="search">
+		
 		<div class="input-group-btn">
 			 <?php if(!empty($categories)) { ?>		
 				<select name="category_id" class="category_filter">
@@ -29,7 +29,8 @@
 			        <?php } ?>
 				</select>		
 			<?php } ?>		
-		</div>		
+		</div>
+		<input class="search_query form-control" type="text" value="" size="35" autocomplete="off" placeholder="<?php echo $objlang->get("text_search");?>" name="search">
 		<button type="submit" class="button-search autosearch-submit btn btn-default" name="submit_search"><i class="fa fa-search"></i></button>    
 	</div>
 	<input type="hidden" name="route" value="product/search"/>

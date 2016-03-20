@@ -71,7 +71,7 @@
 <div id="powered">
   <div class="container">
     <div class="inside">
-      <div class="clearfix space-padding-tb-40">
+      <div class="clearfix space-padding-tb-10">
         <div class="copyright pull-left">
         <?php if( $helper->getConfig('enable_custom_copyright', 0) ) { ?>
           <?php echo html_entity_decode($helper->getConfig('copyright')); ?>
@@ -109,11 +109,6 @@
 
   ?> 
 </div>
-<nav class="bs-docs-sidebar hidden">
-	<ul id="sidebar" class="nav nav-stacked fixed">
-
-	</ul>
-</nav>
 <?php echo html_entity_decode($config_chat_online); ?>
 </body></html>
 

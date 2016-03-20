@@ -14,70 +14,39 @@
 <nav id="topbar">
   <div class="container">
     <div class="topbar-wrap clearfix">
-     <div class="quick-setting pull-left hidden-lg hidden-md hidden-sm">
-        <div class="quickaccess-toggle">
-          <span><?php echo $objlang->get('text_setting');?></span><i class="fa fa-angle-down"></i>
-          <div class="inner-toggle">
-            <ul class="">
-              <li><a class="" href="<?php echo $account; ?>"><span class="fa fa-user"></span><?php echo $text_account; ?></a></li>
-              <li><a class="shoppingcart" href="<?php echo $shopping_cart; ?>"><span class="fa fa-shopping-cart"></span><?php echo $text_shopping_cart; ?></a></li>
-              <li><a class="last" href="<?php echo $checkout; ?>"><span class="fa fa-file"></span><?php echo $text_checkout; ?></a></li> 
-              <?php if ($logged) { ?>
-                  <li><a href="<?php echo $logout; ?>"><span class="fa fa-unlock"></span><?php echo $text_logout; ?></a></li>
-                 <?php } else { ?>
-                  <li><a href="<?php echo $register; ?>"><span class="fa fa-pencil"></span><?php echo $text_register; ?></a></li>
-                  <li><a href="<?php echo $login; ?>"><span class="fa fa-unlock"></span><?php echo $text_login; ?></a> </li>
-                <?php } ?>
-            </ul>
-          </div>
-        </div>
-      </div>  
-
-      <div class="login pull-right hidden-xs">
-        <ul class="links">
-          <li><a class="" href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
-          <li><a class="wishlist" href="<?php echo $wishlist; ?>" id="wishlist-total"><?php echo $text_wishlist; ?></a></li>
-          <?php if ($logged) { ?>
-            <li>  <a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
-            <?php } else { ?>
-            <li>  <a href="<?php echo $register; ?>"><?php echo $text_register; ?></a></li>
-            <li>  <a href="<?php echo $login; ?>"><?php echo $text_login; ?></a>  </li>
-            <?php } ?>
-        </ul>
-      </div>
-   
-    </div>
- 
-  </div>
-</nav>
-<div class="header-top">
-  <div class="container">
-    <div class="inside">
-      <div class="row">
-        <div class="col-xs-12 col-sm-4 col-md-3 text-center">
-          <!-- logo -->
-          <?php if( $logoType=='logo-theme'){ ?>
-          <div  id="logo-theme" class="logo-store"><a href="<?php echo $home; ?>" class="img-responsive"><span><?php echo $name; ?></span></a></div>
-          <?php } elseif ($logo) { ?>
-          <div id="logo" class="logo-store"><a href="<?php echo $home; ?>" class="img-responsive"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a></div>
-          <?php } ?>
-        </div>
-       <div class="hidden-xs col-xs-12 col-sm-4 col-md-3">
           <?php if( $content=$helper->getLangConfig('widget_support') ) {?>
             <div class="box-support">
               <?php echo $content; ?>
             </div>
           <?php } ?> 
+    </div>
+   </div>
+</nav>
+<div class="header-top">
+  <div class="container">
+    <div class="inside">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+          <!-- logo -->
+          <?php if( $logoType=='logo-theme'){ ?>
+          <div  id="logo-theme" class="logo-store"><a href="" class="img-responsive"><span><?php echo $name; ?></span></a></div>
+          <?php } elseif ($logo) { ?>
+          <div id="logo" class="logo-store"><a href="" class="img-responsive"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a></div>
+          <?php } ?>
         </div>
-         <div class="hidden-xs col-xs-12 col-sm-4 col-md-3 line">
-          <?php if( $content=$helper->getLangConfig('widget_contact') ) {?>
-            <div class="box-support">
-              <?php echo $content; ?>
-            </div>
-          <?php } ?> 
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-3 text-center hidden-xs">
+        
+        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 hidden-xs hidden-sm text-center">
           <?php echo $cart; ?>       
+        </div>
+        
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 hidden-xs line">
+           <?php
+            if (count($autosearch) && !empty($autosearch)) {
+            echo $autosearch;
+            } else {
+            echo $search;
+            }
+            ?>
         </div>
       </div>
     </div>
@@ -87,12 +56,11 @@
   <div class="header-bottom">
     <div class="container">
       <div class="row">
-        <div class="col-lg-9 col-md-9 col-sm-6 col-xs-9">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="main-menu">
               <!-- menu -->
               <div id="pav-mainnav" class="pav-mainnav"><div class="pav-megamenu">
               <button data-toggle="offcanvas" class="btn btn-primary canvas-menu hidden-lg hidden-md" type="button"><span class="fa fa-bars"></span> Menu</button>
-                    
               <?php
               /**
               * Main Menu modules: as default if do not put megamenu, the theme will use categories menu for main menu
@@ -125,16 +93,11 @@
               </div>
               </nav>
               <?php } ?>
-              </div></div> 
+              </div>
+              </div> 
             <!-- menu -->  
             </div>
         </div>  
-        <div class="nav-search col-xs-12 col-sm-6 col-md-3">
-          <?php echo $search; ?>
-        </div>
-
-
-      
       </div>
     </div>
   </div>

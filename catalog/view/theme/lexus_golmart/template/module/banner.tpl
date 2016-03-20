@@ -8,9 +8,9 @@
 	<div class="widget-inner clearfix">
 		  <?php foreach ($banners as $banner) { ?>
 		  <?php if ($banner['link']) { ?>
-		  <div class="w-banner"><a href="<?php echo $banner['link']; ?>"><img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" title="<?php echo $banner['title']; ?>" /></a></div>
+		  <div class="w-banner col-lg-4 col-md-4 col-sm-4 col-xs-4"><a href="<?php echo $banner['link']; ?>"><img class="img-responsive" src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" title="<?php echo $banner['title']; ?>" /></a></div>
 		  <?php } else { ?>
-		  <div><img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" title="<?php echo $banner['title']; ?>" /></div>
+		  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><img class="img-responsive" src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" title="<?php echo $banner['title']; ?>" /></div>
 		  <?php } ?>
 		  <?php } ?>
 	</div>

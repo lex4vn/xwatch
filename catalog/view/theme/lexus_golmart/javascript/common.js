@@ -418,12 +418,13 @@ $(document).ready(function() {
 
 // scroll hidden sidebar
 $(window).scroll(function(){
+  $('.bs-docs-sidebar').addClass('hidden');
 	if (($(".product-scroll").length > 0)){
 		var viewableOffset = $(".product-scroll").first().offset().top - $(window).scrollTop(); 
-		var scrollBottom =  $("#pavo-mass-bottom").first().offset().top - $(window).scrollTop();
+		//var scrollBottom =  $("#pavo-mass-bottom").first().offset().top - $(window).scrollTop();
 
-    console.log("top: " + viewableOffset);
-    console.log("last: " + scrollBottom);
+   // console.log("top: " + viewableOffset);
+   // console.log("last: " + scrollBottom);
 
 		if(viewableOffset <= 40 ) {
       $('.bs-docs-sidebar').removeClass('hidden');
@@ -431,9 +432,9 @@ $(window).scroll(function(){
     if(viewableOffset >= 700){
       $('.bs-docs-sidebar').addClass('hidden');
     }
-	  if(scrollBottom <= 590){
-      $('.bs-docs-sidebar').addClass('hidden');
-    }
+	 // if(scrollBottom <= 590){
+  //     $('.bs-docs-sidebar').addClass('hidden');
+  //   }
 		
 	} 
 });

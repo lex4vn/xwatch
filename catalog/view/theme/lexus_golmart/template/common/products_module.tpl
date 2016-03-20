@@ -1,7 +1,7 @@
 <?php
 	$config = $this->registry->get('config');
 	$theme  = $config->get('config_template');
-	$cols = isset($customcols)? $customcols : 2;
+	$cols = isset($customcols)? $customcols : 4;
 	$span = 12/$cols;
 					$themeConfig  	 			= (array)$config->get('themecontrol');
 						$listingConfig  			= array(
@@ -29,7 +29,9 @@
 	$ourl = $this->registry->get('url');
 ?>
 <div class="panel-heading">
-	<h4 class="panel-title"><?php echo $heading_title; ?></h4>
+	<span class="starleft"><i class="fa fa-star"></i></span>
+	<h3 class="panel-title"><?php echo $heading_title; ?></h3>
+	<span class="starright"><i class="fa fa-star"></i></span>
 </div>
 <div class="products-block">
 	<?php foreach ($products as $i => $product) { $i=$i+1; ?>

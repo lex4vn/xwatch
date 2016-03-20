@@ -92,12 +92,14 @@
 									 		$linkBlog = $view_link.$blog['keyword']; 
 									 	}
 									?>
-									<td class="left"><a href="<?php echo $linkBlog ?>" target="_blank"><?php echo $blog['title'];?></a></td>
+									<td class="left"><a href="<?php echo sprintf($edit_link, $blog['blog_id']) ?>"><?php echo $blog['title'];?></a></td>
 									<td class="center"  ><input class="form-control" name="position[<?php echo $blog['blog_id'];?>]" value="<?php echo $blog['position'];?>" style="width:40%"></td>
 									<td class="right"><?php echo ($blog['status']?$objlang->get('text_enable'):$objlang->get('text_disable'));?></td>
 									<td class="right"><?php echo $blog['created'];?></td>
 									<td class="right"><?php echo $blog['hits'];?></td>
-									<td class="right"><a href="<?php echo sprintf($edit_link, $blog['blog_id']) ?>"><?php echo $objlang->get('text_edit');?></a></td>
+									<td class="right"><a href="<?php echo sprintf($edit_link, $blog['blog_id']) ?>"><?php echo $objlang->get('text_edit');?></a>
+										| <a href="<?php echo $linkBlog ?>" target="_blank" title="Xem bài viết ngoài trang chủ">Xem</a>
+									</td>
 								</tr>
 								<?php } ?>
 							</tbody>

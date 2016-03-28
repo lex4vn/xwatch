@@ -58,6 +58,12 @@
 							<li>
 								<a href="#tab-meta" role="tab" data-toggle="tab"><?php echo $objlang->get("text_meta"); ?></a>
 							</li>
+							<li>
+								<a href="#tab-blog-related" role="tab" data-toggle="tab"><?php echo $objlang->get("text_blog_related"); ?></a>
+							</li>
+							<li>
+								<a href="#tab-product-related" role="tab" data-toggle="tab"><?php echo $objlang->get("text_product_related"); ?></a>
+							</li>
 						</ul>
 
 						<div class="tab-content">
@@ -213,7 +219,38 @@
 									</tr>
 								</table>
 							</div><!-- end div .tab-meta -->
-
+							
+							<div id="tab-blog-related" class="tab-pane">
+				              <div class="form-group">
+				                <label class="col-sm-2 control-label" for="input-blog-related"><span data-toggle="tooltip" title="<?php echo $help_blog_related; ?>"><?php echo $entry_blog_related; ?></span></label>
+				                <div class="col-sm-10">
+				                  <input type="text" name="blog-related" value="" placeholder="<?php echo $entry_blog_related; ?>" id="input-blog-related" class="form-control" />
+				                  <div id="blog-related" class="well well-sm" style="height: 150px; overflow: auto;">
+				                    <?php foreach ($blog_relateds as $blog_related) { ?>
+				                    <div id="blog-related<?php echo $blog_related['blog_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $blog_related['title']; ?>
+				                      <input type="hidden" name="blog_related[]" value="<?php echo $blog_related['blog_id']; ?>" />
+				                    </div>
+				                    <?php } ?>
+				                  </div>
+				                </div>
+				              </div>
+							</div><!-- end div .tab-product-related -->
+							
+							<div id="tab-product-related" class="tab-pane">
+				              <div class="form-group">
+				                <label class="col-sm-2 control-label" for="input-related"><span data-toggle="tooltip" title="<?php echo $help_related; ?>"><?php echo $entry_related; ?></span></label>
+				                <div class="col-sm-10">
+				                  <input type="text" name="related" value="" placeholder="<?php echo $entry_related; ?>" id="input-related" class="form-control" />
+				                  <div id="product-related" class="well well-sm" style="height: 150px; overflow: auto;">
+				                    <?php foreach ($product_relateds as $product_related) { ?>
+				                    <div id="product-related<?php echo $product_related['product_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_related['name']; ?>
+				                      <input type="hidden" name="product_related[]" value="<?php echo $product_related['product_id']; ?>" />
+				                    </div>
+				                    <?php } ?>
+				                  </div>
+				                </div>
+				              </div>
+							</div><!-- end div .tab-product-related -->
 						</div><!-- end div .tab-content -->
  
 				</form>
@@ -240,5 +277,65 @@
 	$('#pavblog_blog_description_des_lang<?php echo $language["language_id"]; ?>').summernote({ height: 350 });
 	<?php } ?>
 	
+	
+	// Related
+$('input[name=\'related\']').autocomplete({
+	'source': function(request, response) {
+		$.ajax({
+			url: 'index.php?route=catalog/product/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
+			dataType: 'json',			
+			success: function(json) {
+				response($.map(json, function(item) {
+					return {
+						label: item['name'],
+						value: item['product_id']
+					}
+				}));
+			}
+		});
+	},
+	'select': function(item) {
+		$('input[name=\'related\']').val('');
+		
+		$('#product-related' + item['value']).remove();
+		
+		$('#product-related').append('<div id="product-related' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="product_related[]" value="' + item['value'] + '" /></div>');	
+	}	
+});
+
+$('#product-related').delegate('.fa-minus-circle', 'click', function() {
+	$(this).parent().remove();
+});
+	
+	
+	//Blog Related
+$('input[name=\'blog-related\']').autocomplete({
+	'source': function(request, response) {
+		$.ajax({
+			url: 'index.php?route=module/pavblog/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
+			dataType: 'json',			
+			success: function(json) {
+				response($.map(json, function(item) {
+					return {
+						label: item['title'],
+						value: item['blog_id']
+					}
+				}));
+			}
+		});
+	},
+	'select': function(item) {
+		$('input[name=\'blog-related\']').val('');
+		
+		$('#blog-related' + item['value']).remove();
+		
+		$('#blog-related').append('<div id="blog-related' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="blog_related[]" value="' + item['value'] + '" /></div>');	
+	}	
+});
+
+$('#blog-related').delegate('.fa-minus-circle', 'click', function() {
+	$(this).parent().remove();
+});
+
 </script>
 <?php echo $footer; ?>

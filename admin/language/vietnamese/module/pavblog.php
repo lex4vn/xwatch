@@ -51,6 +51,13 @@ $_['text_guide_seo'] = 'Hướng dẫn kích hoạt SEO';
 $_['text_guide_category'] = 'Quản lý danh mục';
 $_['text_guide_blog'] = 'Quản lý bài viết';
 $_['text_guide_module_setting'] = 'Cài đặt module';
+$_['text_product_related'] = 'Sản phẩm liên quan';
+$_['text_blog_related'] = 'Bài viết liên quan';
+$_['entry_related'] = 'Sản phẩm liên quan';
+$_['entry_blog_related'] = 'Bài viết liên quan';
+$_['help_related']           = 'Click để chọn thêm tên sản phẩm liên quan. Nên chọn 4 sản phẩm';
+$_['help_blog_related']           = 'Click để chọn bài viết liên quan. Nên chọn 4 sản phẩm';
+
 // Entry
 $_['entry_banner']        = 'Biểu ngữ:';
 $_['entry_dimension']     = 'Kích thước (dài x rộng) và kiểu thay đổi kích thước:';

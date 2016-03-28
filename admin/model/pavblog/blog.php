@@ -46,6 +46,35 @@ class ModelPavblogblog extends Model {
 		return $blogs; 
 	}
 	
+	public function getBlogs($filter=array() ){
+		
+		$query = 'SELECT b.*,bd.title FROM '.DB_PREFIX."pavblog_blog b LEFT JOIN ".DB_PREFIX."pavblog_blog_description bd ON b.blog_id=bd.blog_id LEFT JOIN "
+				.DB_PREFIX.'pavblog_category c ON c.category_id=b.category_id';
+				
+		$query .=" WHERE language_id=".(int)$this->config->get('config_language_id');
+		if( isset($filter['title']) && ($filter['title']) ){
+			$query .= ' AND bd.title like "%'.$this->db->escape($filter['title']).'%"';
+		}
+
+		
+		if (isset($filter_data['start']) || isset($filter_data['limit'])) {
+			if ($filter_data['start'] < 0) {
+				$filter_data['start'] = 0;
+			}				
+
+			if ($filter_data['limit'] < 1) {
+				$filter_data['limit'] = 20;
+			}	
+		 
+			$query .= " LIMIT " . (int)$filter_data['start'] . "," . (int)$filter_data['limit'];
+		}
+			
+			
+		$query = $this->db->query( $query );
+		$blogs = $query->rows;
+		return $blogs; 
+	}
+	
 	public function getTotal( $data, $filter=array() ){
 		$query = 'SELECT count(b.blog_id) as total FROM '.DB_PREFIX."pavblog_blog b LEFT JOIN ".DB_PREFIX."pavblog_blog_description bd ON b.blog_id=bd.blog_id LEFT JOIN "
 				.DB_PREFIX.'pavblog_category c ON c.category_id=b.category_id';
@@ -84,6 +113,30 @@ class ModelPavblogblog extends Model {
 		$data['blog_description'] = $languages;
 		return $data;
 	}
+	
+	public function getBlogMeta( $blogId ){
+		$query = $this->db->query("SELECT DISTINCT *, (SELECT keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'blog_id=" . (int)$blogId . "')	AS keyword FROM " . DB_PREFIX . "pavblog_blog p LEFT JOIN " . DB_PREFIX . "pavblog_blog_description pd ON (p.blog_id = pd.blog_id) WHERE p.blog_id = '" . (int)$blogId . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+
+		return $query->row;
+	}
+	
+	public function getProductRelated($blogId) {
+		$product_related_data = array();
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "pavblog_product_related WHERE blog_id = '" . (int)$blogId . "'");
+		foreach ($query->rows as $result) {
+			$product_related_data[] = $result['related_id'];
+		}
+		return $product_related_data;
+	}
+	
+	public function getBlogRelated($blogId) {
+		$blog_related_data = array();
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "pavblog_blog_related WHERE blog_id = '" . (int)$blogId . "'");
+		foreach ($query->rows as $result) {
+			$blog_related_data[] = $result['related_id'];
+		}
+		return $blog_related_data;
+	}
 
 	/**
 	 *
@@ -103,7 +156,6 @@ class ModelPavblogblog extends Model {
 				$tmp[]=" date_modified = NOW() ";
 				$sql .= implode( " , ", $tmp );
 				$sql .= " WHERE blog_id=".$data['pavblog_blog']['blog_id'];
-			// 	echo $sql;die;
 				$this->db->query( $sql );
 			} else {
 				unset($data["pavblog_blog"]['blog_id']);
@@ -140,6 +192,19 @@ class ModelPavblogblog extends Model {
 							.$this->db->escape($data["pavblog_blog_description"][$language['language_id']]['description'])."','".$this->db->escape($data["pavblog_blog_description"][$language['language_id']]['content'])."') ";
 				
 				$this->db->query( $sql );					
+			}
+		}
+		
+		if (isset($data['product_related'])) {
+			$this->db->query("DELETE FROM " . DB_PREFIX . "pavblog_product_related WHERE blog_id = '" . (int)$data["pavblog_blog"]['blog_id'] . "'");
+			foreach ($data['product_related'] as $related_id) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "pavblog_product_related SET blog_id = '" . (int)$data["pavblog_blog"]['blog_id'] . "', related_id = '" . (int)$related_id . "'");
+			}
+		}
+		if (isset($data['blog_related'])) {
+			$this->db->query("DELETE FROM " . DB_PREFIX . "pavblog_blog_related WHERE blog_id = '" . (int)$data["pavblog_blog"]['blog_id'] . "'");
+			foreach ($data['blog_related'] as $blog_related_id) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "pavblog_blog_related SET blog_id = '" . (int)$data["pavblog_blog"]['blog_id'] . "', related_id = '" . (int)$blog_related_id . "'");
 			}
 		}
 		return $data['pavblog_blog']['blog_id'];

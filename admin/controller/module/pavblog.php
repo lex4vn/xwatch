@@ -285,7 +285,7 @@ class ControllerModulePavblog extends Controller {
 		$this->load->model('localisation/language');
 		$this->load->model('tool/image');
 		$this->mdata['no_image'] = $this->model_tool_image->resize('no_image.png', 100, 100);
-
+		$this->mdata['entry_related'] = $this->language->get('entry_related');
 		$this->mdata['entry_image'] = 'Image:';
 		$this->mdata['text_image_manager'] = $this->language->get('text_image_manager');
 		$this->mdata['text_clear'] = $this->language->get('text_clear');
@@ -435,7 +435,12 @@ class ControllerModulePavblog extends Controller {
 				$issubmitfalse = true;
 			}
 		}
+		$this->mdata['entry_related'] = $this->language->get('entry_related');
+		$this->mdata['entry_blog_related'] = $this->language->get('entry_blog_related');
+		$this->mdata['help_related'] = $this->language->get('help_related');
+		$this->mdata['help_blog_related'] = $this->language->get('help_blog_related');
 		$this->mdata['text_image_manager'] = $this->language->get('text_image_manager');
+		$this->mdata['text_blog_related'] = $this->language->get('text_blog_related');
  		$this->mdata['text_browse'] = $this->language->get('text_browse');
 		$this->mdata['text_clear'] = $this->language->get('text_clear');
 
@@ -494,7 +499,51 @@ class ControllerModulePavblog extends Controller {
 			$blog = array_merge( $blog, $this->request->post['pavblog_blog'] );
 
 		}
+		
+		$this->load->model('catalog/product');
+		if (isset($this->request->post['product_related'])) {
+			$products = $this->request->post['product_related'];
+		} elseif (isset($this->request->get['id'])) {
+			$products =$this->model_pavblog_blog->getProductRelated($this->request->get['id']);
+		} else {
+			$products = array();
+		}
 
+		$this->mdata['product_relateds'] = array();
+
+		foreach ($products as $product_id) {
+			$related_info = $this->model_catalog_product->getProduct($product_id);
+
+			if ($related_info) {
+				$this->mdata['product_relateds'][] = array(
+					'product_id' => $related_info['product_id'],
+					'name'       => $related_info['name']
+				);
+			}
+		}
+		
+		// Blog related
+		if (isset($this->request->post['blog_related'])) {
+			$blog_relateds = $this->request->post['blog_related'];
+		} elseif (isset($this->request->get['id'])) {
+			$blog_relateds =$this->model_pavblog_blog->getBlogRelated($this->request->get['id']);
+		} else {
+			$blog_relateds = array();
+		}
+
+		$this->mdata['blog_relateds'] = array();
+
+		foreach ($blog_relateds as $blog_related) {
+			$blog_related_info = $this->model_pavblog_blog->getBlogMeta($blog_related);
+
+			if ($blog_related_info) {
+				$this->mdata['blog_relateds'][] = array(
+					'blog_id' => $blog_related_info['blog_id'],
+					'title'       => $blog_related_info['title']
+				);
+			}
+		}
+		
 		$this->mdata['blog'] = $blog;
 		$this->mdata['pavblog_blog_descriptions'] = $blog_descriptions;
 		$this->mdata['heading_title'] =  $this->language->get('blog_page_heading_title');
@@ -1319,6 +1368,51 @@ class ControllerModulePavblog extends Controller {
 		$module_data = array_merge($list_files, $module_data);
 		$this->load->language('module/'.$this->moduleName);
 		return $module_data;
+	}
+	
+	public function autocomplete() {
+		$json = array();
+
+		if (isset($this->request->get['filter_name']) || isset($this->request->get['filter_model'])) {
+			$this->load->model('pavblog/blog');
+
+			if (isset($this->request->get['filter_name'])) {
+				$filter_name = $this->request->get['filter_name'];
+			} else {
+				$filter_name = '';
+			}
+
+			if (isset($this->request->get['filter_model'])) {
+				$filter_model = $this->request->get['filter_model'];
+			} else {
+				$filter_model = '';
+			}
+
+			if (isset($this->request->get['limit'])) {
+				$limit = $this->request->get['limit'];
+			} else {
+				$limit = 5;
+			}
+
+			$filter_data = array(
+				'title'  => $filter_name,
+				'filter_model' => $filter_model,
+				'start'        => 0,
+				'limit'        => $limit
+			);
+
+			$results = $this->model_pavblog_blog->getBlogs($filter_data);
+
+			foreach ($results as $result) {
+				$json[] = array(
+					'blog_id' => $result['blog_id'],
+					'title'       => strip_tags(html_entity_decode($result['title'], ENT_QUOTES, 'UTF-8'))
+				);
+			}
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
 	}
 }
 ?>

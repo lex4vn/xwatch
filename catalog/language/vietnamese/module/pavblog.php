@@ -51,12 +51,14 @@ $_['text_postedby'] = 'Đăng bởi';
 $_['bloglatest_heading_title'] = 'Bài mới';
 
 // Text
-$_['text_latest']  = 'Mới nhất'; 
+$_['text_latest']  = 'Tin tức'; 
 $_['text_mostviewed']  = 'Xem nhiều'; 
 $_['text_featured']  = 'Nổi bật'; 
 $_['text_bestseller']  = 'Bán chạy'; 
 $_['entry_show_readmore'] = 'Xem thêm' ;
 $_['text_readmore'] = 'Xem thêm';
+$_['text_product_related'] = 'Sản phẩm liên quan';
+$_['text_blog_related'] = 'Bài viết liên quan';
 
 
 // Page Blogs

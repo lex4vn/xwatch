@@ -27,77 +27,21 @@
 				<div class="pav-video"><?php echo html_entity_decode($blog['video_code'], ENT_QUOTES, 'UTF-8');?></div>
 				<?php } ?>
 			</div>
-			<div class="clearfix"></div>
-			<hr>
-
-			<ul class="list-inline">
-			  	<li><?php if( $config->get('blog_show_author') ) { ?>
-				<span class="author"><b><?php echo $objlang->get("text_write_by");?></b> <?php echo $blog['author'];?></span>
-				<?php } ?>
-				</li>
-
-				<li>
-				<?php if( $config->get('blog_show_category') ) { ?>
-				<span class="publishin">
-					<b><?php echo $objlang->get("text_published_in");?></b>
-					<a class="color" href="<?php echo $blog['category_link'];?>" title="<?php echo $blog['category_title'];?>"><?php echo $blog['category_title'];?></a>
-				</span>
-				<?php } ?>	
-				</li>
-
-				<li>
-				<?php if( $config->get('blog_show_created') ) { ?>
-				<span class="created"><b><?php echo $objlang->get("text_created_date");?></b> <?php echo $blog['created'];?></span>
-				<?php } ?>
-				</li>
-
-				<li>
-				<?php if( $config->get('blog_show_hits') ) { ?>
-				<span class="hits"><b><?php echo $objlang->get("text_hits");?></b> <?php echo $blog['hits'];?></span>
-				<?php } ?>		
-				</li>
-
-				<li>
-				<?php if( $config->get('blog_show_comment_counter') ) { ?>
-				<span class="comment_count"><b><?php echo $objlang->get("text_comment_count");?></b> <?php echo $blog['comment_count'];?></span>
-				<?php } ?>	
-				</li>
-			</ul>
 
 			<hr>
 
-			 <?php if( !empty($tags) ) { ?>
-			 <div class="blog-tags">
-				<b><?php echo $objlang->get('text_tags');?></b>
-				<?php 	$i = 1; foreach( $tags as $tag => $tagLink ) { ?>
-					<a class="color" href="<?php echo $tagLink; ?>" title="<?php echo $tag; ?>"><?php echo $tag; ?></a> <?php if($i<count($tags)) { echo ","; }; ?>
-				<?php $i++; }  ?>
-				<hr>
-			 </div>
-			 <?php } ?>
-				
-			 <div class="row">
-				<?php if( !empty($samecategory) ) { ?>
-				<div class="col-sm-6 col-lg-6 col-sm-6 col-xs-12">
-					<h4><?php echo $objlang->get('text_in_same_category');?></h4>
-					<ul class="list-arrow">
-						<?php foreach( $samecategory as $item ) { ?>
-						<li><a href="<?php echo $objurl->link('pavblog/blog',"blog_id=".$item['blog_id']);?>"><?php echo $item['title'];?></a></li>
-						<?php } ?>
-					</ul>
-				</div>
-				<?php } ?>
-				<?php if( !empty($related) ) { ?>
-				<div class="col-sm-6 col-lg-6 col-sm-6 col-xs-12">
-					<h4><?php echo $objlang->get('text_in_related_by_tag');?></h4>
-					<ul class="list-arrow">
-						<?php foreach( $related as $item ) { ?>
-						<li><a href="<?php echo $objurl->link('pavblog/blog',"blog_id=".$item['blog_id']);?>"><?php echo $item['title'];?></a></li>
-						<?php } ?>
-					</ul>
-				</div>
-				<?php } ?>
+			<?php if ($blogs) {  $heading_title = $text_blog_related; $customcols = 4; ?>
+			<div class="blog-grid space-top-20 panel-v3 panel-primary related"> 
+			<?php require( PAVO_THEME_DIR."/template/common/blog_module.tpl" );  ?>
 			</div>
+			<?php } ?>
+			
+			<hr>
+			<?php if ($products) {  $heading_title = $text_product_related; $customcols = 4; ?>
+			<div class="product-grid space-top-20 panel-v3 panel-primary related"> 
+			<?php require( PAVO_THEME_DIR."/template/common/products_module.tpl" );  ?>
+			</div>
+			<?php } ?>
 			
 			<div class="pav-comment">
 				<?php if( $config->get('blog_show_comment_form') ) { ?>

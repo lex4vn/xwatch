@@ -96,7 +96,9 @@ class ControllerpavblogBlog extends Controller {
 			
 			$users = $this->model_pavblog_category->getUsers();
 
-			
+
+			$this->mdata['text_product_related'] = $this->language->get('text_product_related');
+			$this->mdata['text_blog_related'] = $this->language->get('text_blog_related');
 
 			$this->mdata['config']	 = $this->mparams; 
 			if ($blog) {
@@ -201,6 +203,79 @@ class ControllerpavblogBlog extends Controller {
 					$tags[trim($tag)] = $this->url->link( 'pavblog/blogs','tag='.trim($tag) );
 				}
 				
+				// Blog releated
+				$this->mdata['blogs'] = array();
+				$blogs = $this->getModel('blog')->getBlogRelated($this->request->get['blog_id']);
+				foreach( $blogs as $key => $blog_related ){
+					if( $blogs[$key]['image'] ){	
+						$blogs[$key]['thumb_large'] = $this->model_tool_image->resize($blog_related['image'], $this->mparams->get('general_lwidth'), $this->mparams->get('general_lheight'),'w');
+						$blogs[$key]['thumb_small'] = $this->model_tool_image->resize($blog_related['image'], $this->mparams->get('general_swidth'), $this->mparams->get('general_sheight') ,'w');
+						$blogs[$key]['thumb_xsmall'] = $this->model_tool_image->resize($blog_related['image'],$this->mparams->get('general_xwidth'), $this->mparams->get('general_xheight'),'w' );
+					}else {
+						$blogs[$key]['thumb_large'] = '';
+						$blogs[$key]['thumb_small'] = '';
+						$blogs[$key]['thumb_xsmall'] = '';
+					}
+					$this->mdata['blogs'][] = array(
+						'blog_id'  => $blog_related['blog_id'],
+						'thumb'       => $blogs[$key]['thumb_small'],
+						'title'        => $blog_related['title'],
+						'description' => html_entity_decode($blog_related['description'], ENT_QUOTES, 'UTF-8'),
+						'href'        => $this->url->link( 'pavblog/blog','blog_id='.$blog_related['blog_id'] )
+					);
+				}
+
+				// Product releated
+				$this->mdata['products'] = array();
+	
+				$results = $this->getModel('blog')->getProductRelated($this->request->get['blog_id']);
+				$this->load->model('tool/image');
+				foreach ($results as $result) {
+					if ($result['image']) {
+						$image = $this->model_tool_image->resize($result['image'], $this->config->get('config_image_related_width'), $this->config->get('config_image_related_height'));
+					} else {
+						$image = $this->model_tool_image->resize('placeholder.png', $this->config->get('config_image_related_width'), $this->config->get('config_image_related_height'));
+					}
+	
+					if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
+						$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')));
+					} else {
+						$price = false;
+					}
+	
+					if ((float)$result['special']) {
+						$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')));
+					} else {
+						$special = false;
+					}
+	
+					if ($this->config->get('config_tax')) {
+						$tax = $this->currency->format((float)$result['special'] ? $result['special'] : $result['price']);
+					} else {
+						$tax = false;
+					}
+	
+					if ($this->config->get('config_review_status')) {
+						$rating = (int)$result['rating'];
+					} else {
+						$rating = false;
+					}
+	
+					$this->mdata['products'][] = array(
+						'product_id'  => $result['product_id'],
+						'thumb'       => $image,
+						'name'        => $result['name'],
+						'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_product_description_length')) . '..',
+						'price'       => $price,
+						'special'     => $special,
+						'tax'         => $tax,
+						'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
+						'rating'      => $rating,
+						'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])
+					);
+				}
+
+				
 				$this->mdata['tags'] = $tags;
 				if( $this->mparams->get('enable_recaptcha') ){  
 					if ($this->config->get('config_ssl')) {
@@ -265,6 +340,7 @@ class ControllerpavblogBlog extends Controller {
 				$this->document->setTitle($this->language->get('text_error'));
 				
 				$this->mdata['heading_title'] = $this->language->get('text_error');
+
 
 				$this->mdata['text_error'] = $this->language->get('text_error');
 

@@ -337,5 +337,17 @@ $('#blog-related').delegate('.fa-minus-circle', 'click', function() {
 	$(this).parent().remove();
 });
 
+
+$('input[name=\'pavblog_blog_description[1][title]\']').bind('change', function() {
+
+		$.ajax({
+			url: 'index.php?route=common/url/changeAlias&token=<?php echo $token; ?>&title=' +  encodeURIComponent(this.value),
+			dataType: 'json',			
+			success: function(json) {
+				$('input[name=\'pavblog_blog[keyword]\']').val(json);
+			}
+		});
+});
+
 </script>
 <?php echo $footer; ?>

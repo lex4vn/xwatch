@@ -104,6 +104,7 @@ $_['error_permission']    = 'Cảnh bảo: Bạn không có quyền chỉnh sử
 $_['error_dimension']     = 'Bắt buộc phải nhập chiều dài &amp; cao!';
 $_['error_missing_title'] = 'Vui lòng nhập tiêu đề menu cho từng ngôn ngữ';
 $_['text_explain_drapanddrop'] = 'Để sắp xếp thứ tự, kéo và thả menu tương ứng và nhấn nút "Cập nhật" để lưu lại';
+$_['error_keyword'] = 'Đường dẫn URL SEO đã tồn tại trong hệ thống, vui lòng chọn URL khác';
 /***/
 $_['menu_dashboard'] = "Bảng tin";
 $_['menu_manage_categories'] = "Danh mục";

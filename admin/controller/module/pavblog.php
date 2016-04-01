@@ -387,6 +387,20 @@ class ControllerModulePavblog extends Controller {
 
 		}
 
+		if (utf8_strlen($this->request->post['pavblog_blog']['keyword']) > 0) {
+			$this->load->model('catalog/url_alias');
+
+			$url_alias_info = $this->model_catalog_url_alias->getUrlAlias($this->request->post['pavblog_blog']['keyword']);
+
+			if ($url_alias_info && isset($this->request->get['blog_id']) && $url_alias_info['query'] != 'blog_id=' . $this->request->get['blog_id']) {
+					$this->error['warning'][] = sprintf($this->language->get('error_keyword'));
+			}
+
+			if ($url_alias_info && !isset($this->request->get['blog_id'])) {
+				$this->error['warning'][]= sprintf($this->language->get('error_keyword'));
+			}
+		}
+
 		if (!$this->error) {
 			return true;
 		} else {
@@ -418,6 +432,7 @@ class ControllerModulePavblog extends Controller {
 
 		$this->load->model('tool/image');
 		$this->load->model('user/user');
+		
 		// save to database
 		$issubmitfalse = false; 
 		if (isset($this->request->post) && isset($this->request->post['pavblog_blog']) ) {
@@ -435,6 +450,7 @@ class ControllerModulePavblog extends Controller {
 				$issubmitfalse = true;
 			}
 		}
+		
 		$this->mdata['entry_related'] = $this->language->get('entry_related');
 		$this->mdata['entry_blog_related'] = $this->language->get('entry_blog_related');
 		$this->mdata['help_related'] = $this->language->get('help_related');
@@ -481,15 +497,17 @@ class ControllerModulePavblog extends Controller {
 
 		$this->mdata['users'] = $this->model_user_user->getUsers();
 
-
-		foreach( $this->mdata['languages'] as $k => $language ){
-			if( isset($data['blog_description']) && isset($data['blog_description'][$language['language_id']]) ){
-				$blog_descriptions[$language['language_id']] = $data['blog_description'][$language['language_id']];
-			}else {
-				$blog_descriptions[$language['language_id']] = array('title'=>'','description'=>'','content'=>'');
+		if( isset($this->request->post['pavblog_blog_description']) ){
+			$blog_descriptions = $this->request->post['pavblog_blog_description'];
+		}else {
+			foreach( $this->mdata['languages'] as $k => $language ){
+				if( isset($data['blog_description']) && isset($data['blog_description'][$language['language_id']]) ){
+					$blog_descriptions[$language['language_id']] = $data['blog_description'][$language['language_id']];
+				}else {
+					$blog_descriptions[$language['language_id']] = array('title'=>'','description'=>'','content'=>'');
+				}
 			}
 		}
-
 		$this->mdata['action'] = $this->url->link('module/pavblog/blog', 'token=' . $this->session->data['token'], 'SSL');
 		$this->mdata['action_delete'] = $this->url->link('module/pavblog/deleteblog', 'id='.$blog['blog_id'].'&token=' . $this->session->data['token'], 'SSL');
 		$this->mdata['menus'] = $this->model_pavblog_menu->getDropdown(null, $blog['category_id'], 'pavblog_blog[category_id]' );
@@ -544,6 +562,7 @@ class ControllerModulePavblog extends Controller {
 			}
 		}
 		
+
 		$this->mdata['blog'] = $blog;
 		$this->mdata['pavblog_blog_descriptions'] = $blog_descriptions;
 		$this->mdata['heading_title'] =  $this->language->get('blog_page_heading_title');
@@ -601,9 +620,11 @@ class ControllerModulePavblog extends Controller {
 
 
 
+		echo 'ECHO'.$page;
+		echo 'ECHO'.$this->config->get('config_limit_admin');
 		$data = array(
-			'start' => ($page - 1) * $this->config->get('config_admin_limit'),
-			'limit' => $this->config->get('config_admin_limit')
+			'start' => ($page - 1) * $this->config->get('config_limit_admin'),
+			'limit' => $this->config->get('config_limit_admin')
 		);
 		$this->mdata['blogs'] = $this->model_pavblog_blog->getList( $data, $filter );
 		$total =  $this->model_pavblog_blog->getTotal( $data, $filter );

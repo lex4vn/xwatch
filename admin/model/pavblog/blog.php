@@ -28,6 +28,7 @@ class ModelPavblogblog extends Model {
 			$query .= ' AND b.category_id='.$filter['category_id'];
 		}
 		
+		$query .= " ORDER BY b.date_modified  DESC";		
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
@@ -39,7 +40,6 @@ class ModelPavblogblog extends Model {
 		 
 			$query .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
-			
 			
 		$query = $this->db->query( $query );
 		$blogs = $query->rows;
@@ -68,7 +68,7 @@ class ModelPavblogblog extends Model {
 		 
 			$query .= " LIMIT " . (int)$filter_data['start'] . "," . (int)$filter_data['limit'];
 		}
-			
+		$query .= " ORDER BY b.date_modified";	
 			
 		$query = $this->db->query( $query );
 		$blogs = $query->rows;
